@@ -1,0 +1,56 @@
+<!-- <h3> {{ title }}  </h3> -->
+
+<div *ngIf="mensaje" [ngClass]="{'alert-success': status ,'alert-danger': !status }" class="alert alert-success" role="alert">
+  {{mensaje}}
+</div>
+
+<form #animalForm="ngForm" (ngSubmit)="onSubmit(animalForm)" role="form" *ngIf="animal" [@fadeLateral] >
+
+  <legend>{{ title }}</legend>
+
+  <div class="form-group">
+    <label for="">Nombre</label>
+    <input name="name" #name="ngModel" [(ngModel)]="animal.name" type="text" class="form-control" placeholder="Ingrese Nombre..."
+      required>
+    <span class="text-danger" *ngIf="!name.valid && name.touched">
+              El nombre es obligatorio
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="">Descricipcion</label>
+    <textarea name="description" #description="ngModel" [(ngModel)]="animal.description" type="text" class="form-control" placeholder="Ingrese descripcion..."
+      required></textarea>
+
+    <span class="text-danger" *ngIf="!description.valid && description.touched">
+              La descripcion es obligatoria
+    </span>
+  </div>
+
+  <div class="form-group">
+    <label for="">Año</label>
+    <input name="year" #year="ngModel" [(ngModel)]="animal.year" type="text" class="form-control" placeholder="Ingrese año..."
+      required>
+
+    <span class="text-danger" *ngIf="!year.valid && year.touched">
+        El año es obligatorio.
+    </span>
+  </div>
+
+  <div class="image_for_edit" *ngIf="is_edit && animal.image && animal.image !=null">
+    <img src="{{url +'get-image-animal/'+ this.animal.image}}" class="img-rounded img-responsive " />
+  </div>
+  <div *ngIf="is_edit && !animal.image && animal.image ===null ">
+
+    <img src="http://via.placeholder.com/380x200?text=Sin+Imagen...+:(" class="img-rounded img-responsive " />
+
+  </div>
+
+  <div class="form-group">
+    <label for="file">Imagen del animal</label>
+
+    <input (change)="fileChangeEvent($event)" type="file" name="file" placeholder="Subir Imagen">
+  </div>
+
+  <input [disabled]="!animalForm.form.valid" type="submit" class="btn btn-success" value="{{title}}" />
+</form>

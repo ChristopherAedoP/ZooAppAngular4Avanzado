@@ -1,0 +1,34 @@
+<div class="animal-box col-lg-11" *ngIf="animal"  [@fadeIn]>
+  <div class="row">
+    <div class="col-lg-4 pull-left">
+      <div id="animal-head-card" *ngIf="animal.image && animal.image !=null">
+        <img  src="{{url +'get-image-animal/'+ this.animal.image}}" style="width: 300px" class="img-rounded img-responsive center-block" />
+      </div>
+                  <div *ngIf=" !animal.image && animal.image ===null ">
+
+                    <img src="http://via.placeholder.com/380x200?text=Sin+Imagen...+:(" class="img-rounded img-responsive center-block" />
+
+                  </div>
+    </div>
+
+    <div class="col-lg-7 pull-left">
+      <div class="animal-data">
+        <h1> {{ animal.name }} <small>{{ animal.year }}</small> </h1>
+        <hr>
+        <p> {{ animal.description }} </p>
+
+        <p> {{ animal.user.name + ' ' + animal.user.surname}} </p>
+
+      </div>
+      <br>
+      <a [routerLink]="[ '/animales' ]" class="btn btn-primary"> Listado de animales. </a>
+    </div>
+
+
+
+  </div>
+
+
+
+
+</div>

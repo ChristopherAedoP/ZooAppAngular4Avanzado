@@ -1,0 +1,29 @@
+<div class="col-lg-12" [@fadeIn]>
+
+  <div class="col-lg-3" *ngFor="let animal of animals">
+    <div class="thumbnail">
+      <div class="animal-image-mask">
+        <div *ngIf="animal.image && animal.image !=null">
+          <img src="{{url +'get-image-animal/'+ this.animal.image}}" class="img-rounded img-responsive center-block" />
+
+        </div>
+        <div *ngIf=" !animal.image && animal.image ===null ">
+
+          <img src="http://via.placeholder.com/380x200?text=Sin+Imagen...+:(" class="img-rounded img-responsive center-block" />
+
+        </div>
+      </div>
+
+      <div class="caption">
+        <h3>
+          <a [routerLink]="['/animal',animal._id]"> {{animal.name}}</a>
+        </h3>
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

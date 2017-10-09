@@ -1,0 +1,74 @@
+<div class="col-lg-12" [@fadeIn]>
+
+
+<a class="boton_activo btn btn-success"
+  [@marcar]="state" (click)="cambiarEstado(state)"
+> {{botontext}}</a>
+
+<hr>
+<h4>Animaciones CSS3</h4>
+<a class="boton_transiciones" href=""> transiciones</a>
+
+<div class="clearfix"></div>
+
+<div class="caja_animada">
+
+</div>
+
+<hr>
+<p>utilizar jquery dentro de angular</p>
+
+<button type="submit" id="botonJq" > mostrar texto  </button>
+
+<p id="textoJq" class=" alert alert-warning" >
+  texto de ejmplo para jq texto de ejmplo texto de ejemplo - Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, veritatis blanditiis? Natus doloribus, nostrum explicabo voluptas eligendi temporibus illum ipsam voluptate quis quam repudiandae, vel consequatur omnis. Accusamus, quia aliquam.
+</p>
+
+<div id="cajaJq" style="border: 1px solid black; width:150px ; height:50px" >
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi at mollitia alias vero deserunt expedita? Culpa dolorem autem cumque omnis totam suscipit hic excepturi, qui natus itaque dolorum in deleniti?
+</div>
+
+<app-simple-tiny [elementId]="'my-editor-id'" (onEditorKeyup)="textoRichEditor($event)">
+</app-simple-tiny>
+
+<hr>
+padre:
+<h1>{{ titulo }}</h1>
+
+<ul>
+  <li>camiseta rosa</li>
+  <li>gorra negra</li>
+</ul>
+
+<p>
+  nombre del parque: <input type="text" [(ngModel)]="nombreDelParque" (keyup)="mostrarNombre()">
+</p>
+
+<p>
+  resultado : {{nombreDelParque}}
+</p>
+
+<div *ngIf="miParque">
+  <ul>
+    <li>{{miParque.nombre}}</li>
+    <li>{{miParque.metro}}</li>
+    <li> {{miParque.vegetacion}}</li>
+    <li> {{miParque.abierto}}</li>
+  </ul>
+</div>
+
+
+
+
+<hr>
+  <app-parque [nombre]="'prueba parque '" [metrosCuadrados]="545" (pasameLosDatos)="verDatosParque($event)"></app-parque>
+
+
+<p *ngIf="nombreDelParque">
+  hijo:
+  <app-parque [nombre]="nombreDelParque" [metrosCuadrados]="25" (pasameLosDatos)="verDatosParque($event)"></app-parque>
+
+
+
+</p>
+</div>
